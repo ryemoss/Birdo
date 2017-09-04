@@ -1,0 +1,46 @@
+Mono path[0] = 'C:/Users/Ryan/Documents/Unity/Birdo/Birdo_Data/Managed'
+Mono config path = 'C:/Users/Ryan/Documents/Unity/Birdo/Birdo_Data/Mono/etc'
+PlayerConnection initialized from C:/Users/Ryan/Documents/Unity/Birdo/Birdo_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55067
+Multi-casting "[IP] 192.168.0.141 [Port] 55067 [Flags] 2 [Guid] 376744461 [EditorId] 373822001 [Version] 1048832 [Id] WindowsPlayer(CardboardCastle) [Debug] 0" to [225.0.0.222:54997]...
+Started listening to [0.0.0.0:55067]
+PlayerConnection already initialized - listening to [0.0.0.0:55067]
+Player data archive not found at `C:/Users/Ryan/Documents/Unity/Birdo/Birdo_Data/data.unity3d`, using local filesystem
+Initialize engine version: 2017.1.0f3 (472613c02cf7)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: Radeon (TM) RX 470 Graphics (ID=0x67df)
+    Vendor:   ATI
+    VRAM:     3072 MB
+    Driver:   22.19.165.512
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Ryan\Documents\Unity\Birdo\Birdo_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Ryan\Documents\Unity\Birdo\Birdo_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Ryan\Documents\Unity\Birdo\Birdo_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Ryan\Documents\Unity\Birdo\Birdo_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Ryan\Documents\Unity\Birdo\Birdo_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Ryan\Documents\Unity\Birdo\Birdo_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Ryan\Documents\Unity\Birdo\Birdo_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Ryan\Documents\Unity\Birdo\Birdo_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Ryan\Documents\Unity\Birdo\Birdo_Data\Managed\UnityEngine.Timeline.dll (this message is harmless)
+Loading C:\Users\Ryan\Documents\Unity\Birdo\Birdo_Data\Managed\UnityEngine.Timeline.dll into Unity Child Domain
+Platform assembly: C:\Users\Ryan\Documents\Unity\Birdo\Birdo_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\Ryan\Documents\Unity\Birdo\Birdo_Data\Managed\System.Core.dll (this message is harmless)
+- Completed reload, in  0.269 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 3.604385 ms
+Unloading 7 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.528370 ms
+System memory in use before: 17.8 MB.
+System memory in use after: 17.7 MB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 793.
+Total: 0.424217 ms (FindLiveObjects: 0.037740 ms CreateObjectMapping: 0.029548 ms MarkObjects: 0.284079 ms  DeleteObjects: 0.071970 ms)
+
+Setting up 3 worker threads for Enlighten.
+  Thread -> id: ac4 -> priority: 1 
+  Thread -> id: 3074 -> priority: 1 
+  Thread -> id: 18e8 -> priority: 1 
