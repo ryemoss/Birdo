@@ -63,15 +63,7 @@ public class csSerializer : MonoBehaviour
     {
         if (PlayerData.clearquit == false)
         {
-            lso = new List<Serialobj>();
-            foreach (KeyValuePair<int, Staff> pair in csWeaponDatabase.staffDB)
-            {
-                Serialobj so = new Serialobj();
-                so.id = pair.Key;
-                so.val = pair.Value.cost;
-                lso.Add(so);
-            }
-            Serializer.Save("savedata", lso);
+            SaveData_StaffDB();
 
             lso = new List<Serialobj>();
             foreach (KeyValuePair<int, Level> pair in csLevelDatabase.levelDB)
@@ -104,6 +96,16 @@ public class csSerializer : MonoBehaviour
     {
         if (Application.platform != RuntimePlatform.WindowsEditor)
             OnApplicationQuit();
+    }
+    int x = 0;
+    void SaveData_StaffDB()
+    {
+        foreach (KeyValuePair<int, Staff> pair in csWeaponDatabase.staffDB)
+        {
+            PlayerPrefs.SetInt("staff" + pair.Key + "ownership", pair.Value.ownership);
+            x++;
+            PlayerPrefs.SetInt("staffDB.count", x + 1);
+        }
     }
 }
 

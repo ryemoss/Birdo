@@ -59,7 +59,7 @@ public class csBirdBase : MonoBehaviour
                 GetComponent<AudioSource>().Play();
                 flash = true;
                 health -= playerpower;
-                DestroyImmediate(hit);
+                //DestroyImmediate(hit);
                 if (health <= 0)
                 {
                     PlayerData.roundbirds++;

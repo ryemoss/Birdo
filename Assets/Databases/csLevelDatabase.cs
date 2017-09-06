@@ -22,7 +22,7 @@ public class csLevelDatabase : MonoBehaviour
         });*/
         levelDB.Add(1001, new Level
         {
-            birds = addbirds(new Dictionary<string, int> { { "Pigeon", 3 } }),
+            birds = addbirds(new Dictionary<string, int> { { "Dove", 3 } }),
             spawnrate = 1.2f,
             loc = -1,
             next = 1002,

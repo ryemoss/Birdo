@@ -9,6 +9,7 @@ public class csBirdDatabase : MonoBehaviour
     public GameObject pigeon;
     public GameObject goose;
     public GameObject humming;
+    public GameObject dove;
     public GameObject megabird;
 
     void Start()
@@ -30,6 +31,12 @@ public class csBirdDatabase : MonoBehaviour
             health = 1,
             speed = 10f,
             birdgo = humming
+        });
+        birdDB.Add("Dove", new Bird
+        {
+            health = 2,
+            speed = 2,
+            birdgo = dove
         });
         birdDB.Add("Megabird", new Bird
         {

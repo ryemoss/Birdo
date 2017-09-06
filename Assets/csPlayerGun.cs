@@ -180,7 +180,7 @@ public class csPlayerGun : MonoBehaviour
 
         PlayerData.roundshots++;
 
-        Destroy(bullet, 5f);
+        Destroy(bullet, 10f);
     }
 
     void BulletSniper()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class csClickHandler : MonoBehaviour
 {
-    public GameObject achievementsgo, levelselectgo, settingsgo, coinsgo, shopgo;
+    public GameObject achievementsgo, levelselectgo, settingsgo, coinsgo, charactermenu;
     public GameObject wepmenu;
 
     private csAchievements achievements;
@@ -29,12 +29,18 @@ public class csClickHandler : MonoBehaviour
                     if (achievements.click_achievementsbutton())
                         toggleachievements();
                 }
-                if (hit.collider.gameObject.name == "UpgradeStaff" || hit.collider.gameObject.name == "weaponsback")
-                    toggleweapons();
-                if (hit.collider.tag == "achievement")
+                if (hit.collider.gameObject.name == "winselection0")
+                    togglelevelmenu();
+                else if(hit.collider.gameObject.name == "winselection1")
+                    togglecharmenu();
+                else if (hit.collider.gameObject.name == "UpgradeStaff" || hit.collider.gameObject.name == "winselection2")
+                    toggleweaponsmenu();
+                else if(hit.collider.tag == "achievement")
                     achievements.clickAchievementNode(hit.collider.gameObject);
-                if (hit.collider.tag == "wepslot")
+                else if(hit.collider.tag == "wepslot")
                     wepmenu.GetComponent<csMenuWeapons>().slotSelected(hit.collider.gameObject);
+                else if(hit.collider.gameObject.name == "to")
+                    wepmenu.GetComponent<csMenuWeapons>().PurchaseItem();
             }
         }
         if (Input.GetKeyDown(KeyCode.RightBracket))
@@ -45,20 +51,48 @@ public class csClickHandler : MonoBehaviour
     {
         if (levelselectgo.activeInHierarchy)
             lastwindow = levelselectgo;
-        else if (shopgo.activeInHierarchy)
-            lastwindow = shopgo;
+        else if (charactermenu.activeInHierarchy)
+            lastwindow = charactermenu;
 
         lastwindow.SetActive(!lastwindow.activeInHierarchy);
         coinsgo.SetActive(!coinsgo.activeInHierarchy);
         settingsgo.SetActive(!settingsgo.activeInHierarchy);
     }
 
-    void toggleweapons()
+    void togglecharmenu()
     {
-        wepmenu.SetActive(!wepmenu.activeInHierarchy);
-        shopgo.SetActive(!shopgo.activeInHierarchy);
-        settingsgo.SetActive(!settingsgo.activeInHierarchy);
-        achievementsgo.SetActive(!achievementsgo.activeInHierarchy);
+        if (!charactermenu.activeInHierarchy)
+        {
+            levelselectgo.SetActive(false);
+            charactermenu.SetActive(true);
+            wepmenu.SetActive(false);
+            settingsgo.SetActive(true);
+            achievementsgo.SetActive(true);
+        }
+    }
+
+    void toggleweaponsmenu()
+    {
+        if (!wepmenu.activeInHierarchy)
+        {
+            wepmenu.SetActive(true);
+            levelselectgo.SetActive(false);
+            charactermenu.SetActive(false);
+            settingsgo.SetActive(false);
+            achievementsgo.SetActive(false);
+        }
+    }
+
+    void togglelevelmenu()
+    {
+        if (!levelselectgo.activeInHierarchy)
+        {
+            levelselectgo.SetActive(true);
+            wepmenu.SetActive(false);
+            charactermenu.SetActive(false);
+            settingsgo.SetActive(true);
+            achievementsgo.SetActive(true);
+        }
     }
 
 }

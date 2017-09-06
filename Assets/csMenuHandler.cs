@@ -53,7 +53,7 @@ public class csMenuHandler : MonoBehaviour
                 {
                     col = hit.collider;
                     hitobj.transform.GetChild(0).GetComponent<AudioSource>().Play();
-                    showmenu("gem");//
+                    showmenu("gem");
                 }
                 else if (hit.collider.tag == "itemblock")
                 {
