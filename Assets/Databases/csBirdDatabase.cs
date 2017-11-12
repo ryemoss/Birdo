@@ -6,19 +6,19 @@ using System.Collections.Generic;
 public class csBirdDatabase : MonoBehaviour
 {
     public static Dictionary<string, Bird> birdDB = new Dictionary<string, Bird>();
-    public GameObject pigeon;
+    public GameObject dove;
     public GameObject goose;
     public GameObject humming;
-    public GameObject dove;
+    public GameObject pigeon, crow;
     public GameObject megabird;
 
     void Start()
     {
-        birdDB.Add("Pigeon", new Bird
+        birdDB.Add("Dove", new Bird
         {
             health = 2,
             speed = 2.5f,
-            birdgo = pigeon
+            birdgo = dove
         });
         birdDB.Add("Goose", new Bird
         {
@@ -32,11 +32,17 @@ public class csBirdDatabase : MonoBehaviour
             speed = 10f,
             birdgo = humming
         });
-        birdDB.Add("Dove", new Bird
+        birdDB.Add("Pigeon", new Bird
         {
             health = 2,
-            speed = 2,
-            birdgo = dove
+            speed = 2.5f,
+            birdgo = pigeon
+        });
+        birdDB.Add("Crow", new Bird
+        {
+            health = 2,
+            speed = 2.5f,
+            birdgo = crow
         });
         birdDB.Add("Megabird", new Bird
         {

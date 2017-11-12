@@ -54,6 +54,7 @@ public class csEquipBlock : MonoBehaviour
         }
         PlayerData.UpdateStoredStats();
         PlayerData.totalcoins -= Int32.Parse(cost.GetComponent<TextMesh>().text);
+        PlayerPrefs.SetInt("totalcoins", PlayerData.totalcoins);
         playerstats.GetComponent<csStatsDisplay>().UpdateStats();
 
         cost.GetComponent<TextMesh>().text = "0";

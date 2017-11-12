@@ -9,9 +9,13 @@ public class csMMstart: MonoBehaviour
     private TextMesh tm;
     private float t;
 
+    private csAnimations anims;
+
 	void Start ()
 	{
         tm = GetComponent<TextMesh>();
+        anims = gameObject.AddComponent<csAnimations>();
+        anims.GetParams(tm.gameObject, "pulse", .8f, .1f);
 	}
 
 	void Update ()

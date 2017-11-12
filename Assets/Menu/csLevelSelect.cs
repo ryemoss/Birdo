@@ -7,21 +7,26 @@ public class csLevelSelect : MonoBehaviour
 {
     private List<int> levellist;
     public GameObject nodes, nodepf, nodehl, region, nextregion, prevregion;
-    public GameObject shopmenu, winPostStats, coins;
+    public GameObject shopmenu, winPostStats, coins, start, bgstart;
     public Sprite nodecompletesprite;
 
     private GameObject node;
     public int ind, regionnum = 1, maxregion;
     private RaycastHit2D hit;
     private int ncnt = 0;
+    private csAnimations anims;
+    private bool fadein;
 
     void Start()
     {
-        if (PlayerData.previousscene == "Scene_Play")
+        anims = gameObject.AddComponent<csAnimations>();
+        anims.GetParams(start, "pulse", .4f, .03f);
+
+        if (PlayerData.previousscene == "Scene_Play" && PlayerData.prevlevelwin == true)
         {
             winPostStats.SetActive(true);
-            PlayerData.Roundend();
             regionnum = PlayerData.currentlevelnum / 1000;
+            PlayerData.Roundend();
         }
         PopulateNodes();
     }
@@ -32,10 +37,10 @@ public class csLevelSelect : MonoBehaviour
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
             if (hit.collider != null)
-            {
                 ClickEvent(hit.collider);
-            }
         }
+        if (fadein == true)
+            FadeInStart();
     }
 
     void ClickEvent(Collider2D col)
@@ -131,6 +136,20 @@ public class csLevelSelect : MonoBehaviour
         PlayerData.currentlevelnum = ind;
         PlayerData.currentlevel = csLevelDatabase.levelDB[ind];
 
-        SceneManager.LoadScene("Scene_Play");
+        fadein = true;
+    }
+
+    float t = 0;
+    public void FadeInStart()
+    {
+        t += Time.deltaTime;
+
+        bgstart.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, Mathf.Lerp(0, 1, t / .5f));
+        if (t > .5f)
+        {
+            t = 0;
+            fadein = false;
+            SceneManager.LoadScene("Scene_Play");
+        }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class csAchievements : MonoBehaviour
 {
-    public GameObject window, button, descripgo, valuego, nodesgo;
+    public GameObject window, button, descripgo, valuego, nodesgo, nodehighlight, crystals;
 
     private TextMesh descrip, value;
     private List<Achievement> achs;
@@ -19,12 +19,16 @@ public class csAchievements : MonoBehaviour
         value = valuego.GetComponent<TextMesh>();
         achs = new List<Achievement>();
         nodes = new List<GameObject>();
+
+        crystals.GetComponent<TextMesh>().text = "x" + PlayerData.crystalqty.ToString();
+
         foreach (KeyValuePair<int, Achievement> ach in csAchieveDatabase.achieveDB)
             achs.Add(ach.Value);
         foreach (Transform child in nodesgo.transform)
             nodes.Add(child.gameObject);
 
         pos = button.transform.position;
+        ClearText();
 	}
 
 	void Update()
@@ -33,12 +37,19 @@ public class csAchievements : MonoBehaviour
             ButtonAnim();
     }
 
+    private void ClearText()
+    {
+        descrip.text = "";
+        value.text = "";
+    }
+
     public void clickAchievementNode(GameObject go)
     {
         int index = nodes.IndexOf(go);
 
         descrip.text = csAchieveDatabase.achieveDB[index].description;
         value.text = csAchieveDatabase.achieveDB[index].reward.ToString();
+        nodehighlight.transform.position = new Vector3(go.transform.position.x, go.transform.position.y, -.3f);
     }
 
     public bool click_achievementsbutton()

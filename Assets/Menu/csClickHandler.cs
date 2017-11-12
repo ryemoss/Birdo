@@ -5,7 +5,7 @@ using UnityEngine;
 public class csClickHandler : MonoBehaviour
 {
     public GameObject achievementsgo, levelselectgo, settingsgo, coinsgo, charactermenu;
-    public GameObject wepmenu;
+    public GameObject wepmenu, menu0, menu1, menu2;
 
     private csAchievements achievements;
     private RaycastHit2D hit;
@@ -13,6 +13,7 @@ public class csClickHandler : MonoBehaviour
 
     void Start() 
 	{
+        PlayerData.saveable = true;
         achievements = achievementsgo.GetComponent<csAchievements>();
 	}
 
@@ -53,7 +54,12 @@ public class csClickHandler : MonoBehaviour
             lastwindow = levelselectgo;
         else if (charactermenu.activeInHierarchy)
             lastwindow = charactermenu;
+        else if (wepmenu.activeInHierarchy)
+            lastwindow = wepmenu;
 
+        menu0.SetActive(!menu0.activeInHierarchy);
+        menu1.SetActive(!menu1.activeInHierarchy);
+        menu2.SetActive(!menu2.activeInHierarchy);
         lastwindow.SetActive(!lastwindow.activeInHierarchy);
         coinsgo.SetActive(!coinsgo.activeInHierarchy);
         settingsgo.SetActive(!settingsgo.activeInHierarchy);
@@ -66,8 +72,7 @@ public class csClickHandler : MonoBehaviour
             levelselectgo.SetActive(false);
             charactermenu.SetActive(true);
             wepmenu.SetActive(false);
-            settingsgo.SetActive(true);
-            achievementsgo.SetActive(true);
+            selecttab(menu1);
         }
     }
 
@@ -78,8 +83,7 @@ public class csClickHandler : MonoBehaviour
             wepmenu.SetActive(true);
             levelselectgo.SetActive(false);
             charactermenu.SetActive(false);
-            settingsgo.SetActive(false);
-            achievementsgo.SetActive(false);
+            selecttab(menu2);
         }
     }
 
@@ -90,9 +94,16 @@ public class csClickHandler : MonoBehaviour
             levelselectgo.SetActive(true);
             wepmenu.SetActive(false);
             charactermenu.SetActive(false);
-            settingsgo.SetActive(true);
-            achievementsgo.SetActive(true);
+            selecttab(menu0);
         }
+    }
+
+    void selecttab(GameObject tab)
+    {
+        menu0.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+        menu1.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+        menu2.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+        tab.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, .2f);
     }
 
 }

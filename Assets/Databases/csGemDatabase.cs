@@ -10,13 +10,24 @@ public class csGemDatabase : MonoBehaviour
 
     void Start()
     {
+        gemDB.Add(99, new Gem
+        {
+            name = "None",
+            id = 99,
+            health = 100,
+            energy = 100,
+            ownership = 2,
+            descrip = "",
+            cost = 0,
+            sprite = Resources.Load<Sprite>("Gems/gem_none"),
+        });
         gemDB.Add(100, new Gem
         {
             name = "Stone",
             id = 100,
             health = 110,
             energy = 100,
-            ownership = 2,
+            ownership = 1,
             descrip = "A Stone insert.",
             cost = 50,
             sprite = Resources.Load<Sprite>("Gems/gem_stone"),

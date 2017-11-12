@@ -11,8 +11,6 @@ public class csBirdDove : MonoBehaviour
     private Rigidbody2D rigidbod;
     private int spawnside;
 
-    private float t, nextt = 1f;
-
     void Start()
     {
         GetComponent<csBirdBase>().birdtype = csBirdDatabase.birdDB["Dove"];
@@ -21,26 +19,14 @@ public class csBirdDove : MonoBehaviour
         speed = GetComponent<csBirdBase>().birdtype.speed;
 
         rigidbod = gameObject.GetComponent<Rigidbody2D>();
-        speed = -spawnside * speed;
+        rigidbod.velocity = new Vector2(-spawnside * speed, 0);
 
-        InvokeRepeating("dropbomb", 1f, .2f);
-    }
-
-    void Update()
-    {
-        t += Time.deltaTime;
-
-        if (t > nextt)
-        {
-            t = 0;
-            nextt = Random.Range(.2f, .3f);
-            rigidbod.velocity = speed * new Vector2(Random.Range(.1f, 2f), Random.Range(-1f, 1f)).normalized;
-        }
+        InvokeRepeating("dropbomb", 1f, .7f);
     }
 
     void dropbomb()
     {
-        if (Random.Range(0, 10) == 0)
+        if (Random.Range(0, 2) == 0)
         {
             bomb = Instantiate(bombpf) as GameObject;
             bomb.transform.position = new Vector3(transform.position.x, transform.position.y, 1);

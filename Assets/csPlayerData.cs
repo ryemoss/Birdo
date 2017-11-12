@@ -18,8 +18,9 @@ public static class PlayerData
     public static int roundexp = 0;
     public static float roundaccuracy = 0.0f;
     public static int roundshots = 0;
+    public static bool prevlvlwon = false;
 
-    public static int totalcoins = 10;
+    public static int totalcoins = 10, crystalqty = 0;
     public static int totalbirds = 0;
 
     public static Level currentlevel;
@@ -36,6 +37,7 @@ public static class PlayerData
     public static float power;
     public static float firerate;
     public static float reloadspd;
+    public static bool saveable;
 
     public static void Initialize()
     {
@@ -45,12 +47,13 @@ public static class PlayerData
             staff = csWeaponDatabase.staffDB[PlayerPrefs.GetInt("staffnum")];
 
         if (PlayerPrefs.GetInt("gemnum") < 100)
-            gem = csGemDatabase.gemDB[100];
+            gem = csGemDatabase.gemDB[99];
         else
             gem = csGemDatabase.gemDB[PlayerPrefs.GetInt("gemnum")];
 
         bullet = staff.bullet;
         totalcoins = PlayerPrefs.GetInt("totalcoins");
+        crystalqty = PlayerPrefs.GetInt("crystals");
 
         UpdateStoredStats();
     }

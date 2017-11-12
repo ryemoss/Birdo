@@ -15,8 +15,12 @@ public class csLevelManager: MonoBehaviour
 
     public GameObject lvlcomplete;
     public GameObject lvlfailed;
+    public GameObject pausewin;
+    public AudioClip song1, song2;
     private bool lvlend = false;
-    private bool begin = false;
+    private bool begin = false, paused;
+
+    private RaycastHit2D hit;
 
     void Start()
     {
@@ -53,6 +57,40 @@ public class csLevelManager: MonoBehaviour
                 LevelCompleted();
             }
         }
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+
+            if (hit.collider != null)
+            {
+                if (hit.collider.gameObject.name == "pause")
+                {
+                    if (paused == false)
+                    {
+                        Time.timeScale = 0f;
+                        paused = true;
+                        pausewin.SetActive(true);
+                    }
+                    else if (paused == true)
+                    {
+                        Time.timeScale = 1.0f;
+                        paused = false;
+                        pausewin.SetActive(false);
+                    }
+                }
+                if (hit.collider.name == "exit")
+                {
+                    PlayerData.previousscene = SceneManager.GetActiveScene().name;
+                    SceneManager.LoadScene("Scene_Upgrades");
+                }
+                else if (hit.collider.name == "resume")
+                {
+                    Time.timeScale = 1.0f;
+                    paused = false;
+                    pausewin.SetActive(false);
+                }
+            }
+        }
     }
 
     void Spawnbird(Bird btype)
@@ -87,13 +125,14 @@ public class csLevelManager: MonoBehaviour
 
     private void LevelCompleted()
     {
+        PlayerData.prevlevelwin = true;
         lvlend = true;
         lvlcomplete.SetActive(true);
         lvlcomplete.GetComponent<AudioSource>().Play();
         lvlcomplete.transform.GetChild(0).GetComponent<MeshRenderer>().sortingOrder = 6;
         csLevelDatabase.levelDB[currentlevelnum].complete = 2;
         if (csLevelDatabase.levelDB[csLevelDatabase.levelDB[currentlevelnum].next].complete == 0) // if next level isnt already available
-            csLevelDatabase.levelDB[csLevelDatabase.levelDB[currentlevelnum].next].complete = 1; //make next level available
+            csLevelDatabase.levelDB[csLevelDatabase.levelDB[currentlevelnum].next].complete = 1; // make next level available
         StartCoroutine(SceneReturn());
     }
 
@@ -117,7 +156,7 @@ public class csLevelManager: MonoBehaviour
         SceneManager.LoadScene("Scene_Upgrades");
     }
 
-    void dictcopy()
+    void dictcopy() // "deep" copy of level dictionary
     {
         foreach (KeyValuePair<Bird, int> pair in csLevelDatabase.levelDB[currentlevelnum].birds)
         {

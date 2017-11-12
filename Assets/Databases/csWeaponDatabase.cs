@@ -13,16 +13,16 @@ public class csWeaponDatabase : MonoBehaviour
         ///////// IRON RODS
         staffDB.Add(100, new Staff
         {
-            name = "Iron Rod",
+            name = "Rod",
             id = 100,
             next = 200,
             ownership = 2,
-            power = 1f,
-            firerate = 1.0f,
+            power = .8f,
+            firerate = .9f,
             reloadspeed = 1f,
-            energy = 1/10f + .001f,
+            energy = 1 / 10f + .001f,
             type = "normal",
-            descrip = "A basic rod made from iron.",
+            descrip = "A really simple rod.",
             cost = 0,
             sprite = Resources.Load<Sprite>("Weapons/staff_iron1"),
             bullet = Resources.Load<GameObject>("Bullets/bullet_iron"),
@@ -30,9 +30,26 @@ public class csWeaponDatabase : MonoBehaviour
         });
         staffDB.Add(200, new Staff
         {
-            name = "Iron Rod+",
+            name = "Iron Rod",
             id = 200,
             next = 300,
+            ownership = 1,
+            power = 1f,
+            firerate = 1.0f,
+            reloadspeed = 1f,
+            energy = 1/10f + .001f,
+            type = "normal",
+            descrip = "A basic rod made from iron.",
+            cost = 1,
+            sprite = Resources.Load<Sprite>("Weapons/staff_iron1"),
+            bullet = Resources.Load<GameObject>("Bullets/bullet_iron"),
+
+        });
+        staffDB.Add(300, new Staff
+        {
+            name = "Iron Rod+",
+            id = 300,
+            next = 400,
             ownership = 0,
             power = 2f,
             firerate = 1.1f,
@@ -40,16 +57,16 @@ public class csWeaponDatabase : MonoBehaviour
             energy = 1 / 10f + .001f,
             type = "normal",
             descrip = "A more refined rod made from iron.",
-            cost = 30,
+            cost = 20,
             sprite = Resources.Load<Sprite>("Weapons/staff_iron2"),
             bullet = Resources.Load<GameObject>("Bullets/bullet_iron"),
 
         });
-        staffDB.Add(300, new Staff
+        staffDB.Add(400, new Staff
         {
             name = "Metal Staff",
-            id = 300,
-            next = 400,
+            id = 400,
+            next = 500,
             ownership = 0,
             power = 3f,
             firerate = 1.2f,
@@ -57,15 +74,15 @@ public class csWeaponDatabase : MonoBehaviour
             energy = 1 / 12f + .001f,
             type = "normal",
             descrip = "A resilient metal staff.",
-            cost = 90,
+            cost = 60,
             sprite = Resources.Load<Sprite>("Weapons/staff_iron3"),
             bullet = Resources.Load<GameObject>("Bullets/bullet_metal"),
         });
-        staffDB.Add(400, new Staff
+        staffDB.Add(500, new Staff
         {
             name = "Forged Staff",
-            id = 400,
-            next = 500,
+            id = 500,
+            next = 600,
             ownership = 0,
             power = 4f,
             firerate = 1.3f,
@@ -73,14 +90,15 @@ public class csWeaponDatabase : MonoBehaviour
             energy = 1 / 12f + .001f,
             type = "normal",
             descrip = "A metal staff of the highest grade.",
-            cost = 180,
+            cost = 100,
             sprite = Resources.Load<Sprite>("Weapons/staff_iron4"),
             bullet = Resources.Load<GameObject>("Bullets/bullet_metal"),
         });
-        staffDB.Add(500, new Staff
+        staffDB.Add(600, new Staff
         {
             name = "Meteorite Staff",
-            id = 500,
+            id = 600,
+            next = 0,
             ownership = 0,
             power = 5f,
             firerate = 1.5f,
@@ -88,7 +106,7 @@ public class csWeaponDatabase : MonoBehaviour
             energy = 1 / 14f + .001f,
             type = "normal",
             descrip = "From metals not of this earth.",
-            cost = 360,
+            cost = 200,
             sprite = Resources.Load<Sprite>("Weapons/staff_iron5"),
             bullet = Resources.Load<GameObject>("Bullets/bullet_meteor"),
         });
@@ -105,7 +123,7 @@ public class csWeaponDatabase : MonoBehaviour
             reloadspeed = 1.2f,
             energy = 1/8f + .001f,
             type = "normal",
-            cost = 40,
+            cost = 20,
             sprite = Resources.Load<Sprite>("Weapons/staff_wood1"),
             bullet = Resources.Load<GameObject>("Bullets/bullet_stone1"),
         });
@@ -121,7 +139,7 @@ public class csWeaponDatabase : MonoBehaviour
             reloadspeed = 1.2f,
             energy = 1 / 8f + .001f,
             type = "normal",
-            cost = 80,
+            cost = 50,
             sprite = Resources.Load<Sprite>("Weapons/staff_wood2"),
             bullet = Resources.Load<GameObject>("Bullets/bullet_stone2"),
         });
@@ -137,7 +155,7 @@ public class csWeaponDatabase : MonoBehaviour
             reloadspeed = 1.3f,
             energy = 1 / 8f + .001f,
             type = "normal",
-            cost = 200,
+            cost = 120,
             sprite = Resources.Load<Sprite>("Weapons/staff_wood3"),
             bullet = Resources.Load<GameObject>("Bullets/bullet_stone3"),
         });
@@ -153,7 +171,7 @@ public class csWeaponDatabase : MonoBehaviour
             reloadspeed = 1.3f,
             energy = 1 / 8f + .001f,
             type = "normal",
-            cost = 400,
+            cost = 250,
             sprite = Resources.Load<Sprite>("Weapons/staff_wood4"),
             bullet = Resources.Load<GameObject>("Bullets/bullet_stone3"),
         });
@@ -168,11 +186,11 @@ public class csWeaponDatabase : MonoBehaviour
             reloadspeed = 1.3f,
             energy = 1 / 8f + .001f,
             type = "normal",
-            cost = 600,
+            cost = 400,
             sprite = Resources.Load<Sprite>("Weapons/staff_wood5"),
             bullet = Resources.Load<GameObject>("Bullets/bullet_stone3"),
         });
-        ////////// STELL RODS
+        ////////// STEEL RODS
         staffDB.Add(102, new Staff
         {
             name = "Steel Rod",
@@ -185,63 +203,63 @@ public class csWeaponDatabase : MonoBehaviour
             energy = 1/8f + .001f,
             type = "sniper",
             descrip = "A precisely crafted rod.",
-            cost = 50,
+            cost = 30,
             sprite = Resources.Load<Sprite>("Weapons/staff_steel1"),
-            bullet = Resources.Load<GameObject>("Bullets/bullet_musket"),
+            bullet = Resources.Load<GameObject>("Bullets/bullet_musket1"),
         });
         staffDB.Add(202, new Staff
         {
             name = "Hardened Steel Rod",
             id = 202,
             next = 302,
-            ownership = 1,
+            ownership = 0,
             power = 3f,
             firerate = 0.9f,
             reloadspeed = 0.9f,
             energy = 1 / 8f + .001f,
             type = "sniper",
             descrip = "A precisely crafted rod.",
-            cost = 100,
+            cost = 60,
             sprite = Resources.Load<Sprite>("Weapons/staff_steel2"),
-            bullet = Resources.Load<GameObject>("Bullets/bullet_musket"),
+            bullet = Resources.Load<GameObject>("Bullets/bullet_musket2"),
         });
         staffDB.Add(302, new Staff
         {
             name = "Machined Steel Staff",
             id = 302,
             next = 402,
-            ownership = 1,
+            ownership = 0,
             power = 3f,
             firerate = 0.9f,
             reloadspeed = 0.9f,
             energy = 1 / 8f + .001f,
             type = "sniper",
             descrip = "A precisely crafted rod.",
-            cost = 200,
+            cost = 160,
             sprite = Resources.Load<Sprite>("Weapons/staff_steel3"),
-            bullet = Resources.Load<GameObject>("Bullets/bullet_musket"),
+            bullet = Resources.Load<GameObject>("Bullets/bullet_musket3"),
         });
         staffDB.Add(402, new Staff
         {
             name = "Machined Steel Staff+",
             id = 402,
             next = 502,
-            ownership = 1,
+            ownership = 0,
             power = 4f,
             firerate = 0.9f,
             reloadspeed = 0.9f,
             energy = 1 / 8f + .001f,
             type = "sniper",
             descrip = "A precisely crafted rod.",
-            cost = 340,
+            cost = 280,
             sprite = Resources.Load<Sprite>("Weapons/staff_steel4"),
-            bullet = Resources.Load<GameObject>("Bullets/bullet_musket"),
+            bullet = Resources.Load<GameObject>("Bullets/bullet_musket3"),
         });
         staffDB.Add(502, new Staff
         {
             name = "Vector Staff",
             id = 502,
-            ownership = 1,
+            ownership = 0,
             power = 4f,
             firerate = 0.9f,
             reloadspeed = 0.9f,
@@ -250,21 +268,21 @@ public class csWeaponDatabase : MonoBehaviour
             descrip = "A precisely crafted rod.",
             cost = 500,
             sprite = Resources.Load<Sprite>("Weapons/staff_steel5"),
-            bullet = Resources.Load<GameObject>("Bullets/bullet_musket"),
+            bullet = Resources.Load<GameObject>("Bullets/bullet_musket3"),
         });
         //////// QUICK RODS
         staffDB.Add(103, new Staff
         {
             name = "Spindled Staff",
-            id = 402,
-            ownership = 0,
+            id = 103,
+            ownership = 1,
             power = 1f,
             firerate = 3f,
             reloadspeed = 1f,
             energy = 1/15f + .001f,
             type = "normal",
             descrip = "A tightly wrapped staff boasting speed",
-            cost = 100,
+            cost = 60,
             sprite = Resources.Load<Sprite>("Weapons/staff_spindled"),
             bullet = Resources.Load<GameObject>("Bullets/bullet_steel"),
         });
@@ -273,14 +291,14 @@ public class csWeaponDatabase : MonoBehaviour
         {
             name = "Staff of the Frog",
             id = 104,
-            ownership = 0,
+            ownership = 1,
             power = 1f,
             firerate = .6f,
             reloadspeed = 1.5f,
             energy = 1/5f + .001f,
             type = "shotgun",
             descrip = "Crafted from the throat of a frog",
-            cost = 150,
+            cost = 100,
             sprite = Resources.Load<Sprite>("Weapons/staff_frog"),
             bullet = Resources.Load<GameObject>("Bullets/bullet_steel"),
         });

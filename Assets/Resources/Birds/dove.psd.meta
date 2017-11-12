@@ -1,17 +1,17 @@
 fileFormatVersion: 2
-guid: bf7d63ec94b17e148bc2def4088c31d9
-timeCreated: 1504666455
+guid: eeae1f8c6e85757469db6978628faf8e
+timeCreated: 1499479647
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: dove_0
-    21300002: dove_1
-    21300004: dove_2
-    21300006: dove_3
+    21300000: pigeon_0
+    21300002: pigeon_1
+    21300004: pigeon_2
+    21300006: pigeon_3
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -30,12 +30,12 @@ TextureImporter:
   generateCubemap: 6
   cubemapConvolution: 0
   seamlessCubemap: 0
-  textureFormat: 1
+  textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapU: 1
     wrapV: 1
@@ -87,13 +87,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dove_0
+      name: pigeon_0
       rect:
         serializedVersion: 2
         x: 5
-        y: 32
-        width: 16
-        height: 13
+        y: 33
+        width: 14
+        height: 11
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -101,13 +101,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: dove_1
+      name: pigeon_1
       rect:
         serializedVersion: 2
         x: 27
-        y: 32
-        width: 15
-        height: 13
+        y: 33
+        width: 14
+        height: 11
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,13 +115,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: dove_2
+      name: pigeon_2
       rect:
         serializedVersion: 2
-        x: 47
-        y: 32
-        width: 16
-        height: 13
+        x: 49
+        y: 33
+        width: 14
+        height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -129,13 +129,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: dove_3
+      name: pigeon_3
       rect:
         serializedVersion: 2
-        x: 66
-        y: 32
-        width: 16
-        height: 13
+        x: 68
+        y: 33
+        width: 14
+        height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

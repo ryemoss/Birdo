@@ -92,14 +92,16 @@ public class csSerializer : MonoBehaviour
         /*if (Application.platform != RuntimePlatform.WindowsEditor)
             System.Diagnostics.Process.GetCurrentProcess().Kill();*/
     }
+
     void OnApplicationPause()
     {
-        if (Application.platform != RuntimePlatform.WindowsEditor)
+        if (PlayerData.saveable == true && Application.platform != RuntimePlatform.WindowsEditor)
             OnApplicationQuit();
     }
-    int x = 0;
+
     void SaveData_StaffDB()
     {
+        int x = 0;
         foreach (KeyValuePair<int, Staff> pair in csWeaponDatabase.staffDB)
         {
             PlayerPrefs.SetInt("staff" + pair.Key + "ownership", pair.Value.ownership);

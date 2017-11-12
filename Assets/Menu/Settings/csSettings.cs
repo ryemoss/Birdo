@@ -38,10 +38,10 @@ public class csSettings : MonoBehaviour
                 confirmwindow.SetActive(true);
             else if (hit.collider != null && hit.collider.name == "yes")
             {
-                Debug.Log("data cleared");
                 Serializer.Delete("savedata");
                 Serializer.Delete("leveldata");
                 PlayerPrefs.DeleteAll();
+                Debug.Log("data cleared");
                 PlayerData.clearquit = true;
                 Application.Quit();
             }

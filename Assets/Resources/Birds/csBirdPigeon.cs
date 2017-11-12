@@ -4,15 +4,14 @@ using System.Collections;
 
 public class csBirdPigeon : MonoBehaviour
 {
-    public GameObject coinpf;
     public GameObject bombpf;
-
     private GameObject bomb;
-    private GameObject coin;
 
     private float speed;
     private Rigidbody2D rigidbod;
     private int spawnside;
+
+    private float t, nextt = 1f;
 
     void Start()
     {
@@ -22,9 +21,21 @@ public class csBirdPigeon : MonoBehaviour
         speed = GetComponent<csBirdBase>().birdtype.speed;
 
         rigidbod = gameObject.GetComponent<Rigidbody2D>();
-        rigidbod.velocity = new Vector2(-spawnside * speed, 0);
+        speed = -spawnside * speed;
 
         InvokeRepeating("dropbomb", 1f, .2f);
+    }
+
+    void Update()
+    {
+        t += Time.deltaTime;
+
+        if (t > nextt)
+        {
+            t = 0;
+            nextt = Random.Range(.2f, .3f);
+            rigidbod.velocity = speed * new Vector2(Random.Range(.1f, 2f), Random.Range(-1f, 1f)).normalized;
+        }
     }
 
     void dropbomb()

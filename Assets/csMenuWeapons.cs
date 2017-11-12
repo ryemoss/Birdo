@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class csMenuWeapons : MonoBehaviour
 {
-    public GameObject slots, oldwep, newwep;
+    public GameObject slots, oldwep, newwep, slothightlight;
     public Sprite unknown;
     public GameObject coins;
 
@@ -14,15 +14,16 @@ public class csMenuWeapons : MonoBehaviour
     private Staff nextstaff;
     private GameObject currentgo;
 
-    public GameObject oldpg, oldfg, oldrg;
+    public GameObject oldpg, oldfg, oldrg, oldptextg, oldftextg, oldrtextg, OldText;
+    public GameObject oldnameg, olddescripg, wepname, descrip;
     public GameObject modp, modfr, modr;
-    public GameObject wepname, descrip;
-    public GameObject newpg, newfg, newrg, cost;
+    public GameObject newpg, newfg, newrg, newptextg, newftextg, newrtextg, cost;
     public GameObject equipsymbol;
 
+    private TextMesh oldname, olddescrip;
     private TextMesh oldp, oldf, oldr;
     private TextMesh modtp, modtf, modtr;
-    private TextMesh namet, descript;
+    private TextMesh newname, newdescrip;
     private TextMesh newp, newf, newr;
 
     private bool singleclick;
@@ -63,15 +64,17 @@ public class csMenuWeapons : MonoBehaviour
             }
         }
 
+        oldname = oldnameg.GetComponent<TextMesh>();
         oldp = oldpg.GetComponent<TextMesh>();
         oldf = oldfg.GetComponent<TextMesh>();
         oldr = oldrg.GetComponent<TextMesh>();
+        olddescrip = olddescripg.GetComponent<TextMesh>();
 
-        namet = wepname.GetComponent<TextMesh>();
+        newname = wepname.GetComponent<TextMesh>();
         newp = newpg.GetComponent<TextMesh>();
         newf = newfg.GetComponent<TextMesh>();
         newr = newrg.GetComponent<TextMesh>();
-        descript = descrip.GetComponent<TextMesh>();
+        newdescrip = descrip.GetComponent<TextMesh>();
 
         modtp = modp.GetComponent<TextMesh>();
         modtf = modfr.GetComponent<TextMesh>();
@@ -83,24 +86,26 @@ public class csMenuWeapons : MonoBehaviour
     void Initialize()
     {
         cost.GetComponent<TextMesh>().text = "";
-        ClearStats();
-        ClearCompare();
+        ClearNewStats();
+        ClearOldStats();
         oldwep.GetComponent<SpriteRenderer>().sprite = null;
         newwep.GetComponent<SpriteRenderer>().sprite = null;
         transform.Find("to").gameObject.SetActive(false);
-        GameObject.Find("t_power").GetComponent<TextMesh>().text = "";
-        GameObject.Find("t_firerate").GetComponent<TextMesh>().text = "";
-        GameObject.Find("t_reload").GetComponent<TextMesh>().text = "";
+        thisstaff = PlayerData.staff;
         equipsymbol.transform.parent = wepslots[weps.IndexOf(PlayerData.staff)].transform;
         equipsymbol.transform.localPosition = new Vector3(-.68f, equipsymbol.transform.localPosition.y, equipsymbol.transform.localPosition.z);
+        slothightlight.SetActive(false);
     }
 
     void ShowText()
     {
         transform.Find("to").gameObject.SetActive(true);
-        GameObject.Find("t_power").GetComponent<TextMesh>().text = "POWER:";
-        GameObject.Find("t_firerate").GetComponent<TextMesh>().text = "FIRERATE:";
-        GameObject.Find("t_reload").GetComponent<TextMesh>().text = "RELOAD:";
+        newptextg.GetComponent<TextMesh>().text = "POWER:";
+        newftextg.GetComponent<TextMesh>().text = "FIRERATE:";
+        newrtextg.GetComponent<TextMesh>().text = "RELOAD:";
+        OldText.SetActive(true);
+        slothightlight.SetActive(true);
+
     }
 
     void Update()
@@ -117,13 +122,15 @@ public class csMenuWeapons : MonoBehaviour
     {
         ShowText();
         currentgo = go;
+        slothightlight.transform.position = new Vector3(go.transform.position.x, go.transform.position.y, -2);
+
         if (go.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite == unknown)
         {
             thisstaff = null;
             nextstaff = weps[wepslots.IndexOf(go)];
             oldwep.GetComponent<SpriteRenderer>().sprite = unknown;
             newwep.GetComponent<SpriteRenderer>().sprite = nextstaff.sprite;
-            CompareStats(nextstaff, nextstaff);
+            CompareStats(null, nextstaff);
             cost.GetComponent<TextMesh>().text = nextstaff.cost.ToString();
         }
         else
@@ -142,28 +149,42 @@ public class csMenuWeapons : MonoBehaviour
             {
                 oldwep.GetComponent<SpriteRenderer>().sprite = thisstaff.sprite;
                 newwep.GetComponent<SpriteRenderer>().sprite = unknown;
-                ClearCompare();
-                ClearStats();
+                ClearNewStats();
+                ClearOldStats();
+                ShowOldStats(thisstaff);
             }
         }
     }
 
-    private void ShowStats(Staff staff)
+    private void ShowOldStats(Staff old)
     {
-        namet.text = staff.name;
-        descript.text = staff.descrip;
-        //oldp.text = staff.power.ToString();
-        //oldf.text = staff.firerate.ToString();
-        //oldr.text = staff.reloadspeed.ToString();
+        oldname.text = old.name;
+        olddescrip.text = WrapText(old.descrip, 20);
+        oldp.text = old.power.ToString();
+        oldf.text = old.firerate.ToString();
+        oldr.text = old.reloadspeed.ToString();
+        OldText.SetActive(true);
     }
 
     private void CompareStats(Staff old, Staff upg)
     {
-        namet.text = upg.name;
-        descript.text = upg.descrip;
+        if (old != null)
+        {
+            oldname.text = old.name;
+            olddescrip.text = WrapText(old.descrip, 20);
+            oldp.text = old.power.ToString();
+            oldf.text = old.firerate.ToString();
+            oldr.text = old.reloadspeed.ToString();
+        }
+        else
+            ClearOldStats();
+
+        newname.text = upg.name;
+        newdescrip.text = WrapText(upg.descrip, 18);
         newp.text = upg.power.ToString();
         newf.text = upg.firerate.ToString();
         newr.text = upg.reloadspeed.ToString();
+
         /*
         if (upg.power >= old.power)
         {
@@ -199,23 +220,22 @@ public class csMenuWeapons : MonoBehaviour
         }*/
     }
 
-    private void ClearStats()
+    private void ClearOldStats()
     {
-        namet.text = "";
-        descript.text = "";
-        oldp.text = "";
-        oldf.text = "";
-        oldr.text = "";
+        OldText.SetActive(false);
     }
 
-    private void ClearCompare()
+    private void ClearNewStats()
     {
-        modtp.text = "";
-        modtf.text = "";
-        modtr.text = "";
+        cost.GetComponent<TextMesh>().text = "";
+        newname.text = "";
+        newdescrip.text = "";
         newp.text = "";
         newf.text = "";
         newr.text = "";
+        newptextg.GetComponent<TextMesh>().text = "";
+        newftextg.GetComponent<TextMesh>().text = "";
+        newrtextg.GetComponent<TextMesh>().text = "";
     }
 
     private void doubleclick(GameObject go)
@@ -246,22 +266,26 @@ public class csMenuWeapons : MonoBehaviour
 
     public void PurchaseItem()
     {
-        Staff stafftobuy = nextstaff;
-        if (stafftobuy.cost <= PlayerData.totalcoins)
+        if (thisstaff == null || thisstaff.next != 0)
         {
-            //GetComponent<AudioSource>().Play();
-            stafftobuy.ownership = 2;
-            PlayerData.totalcoins -= stafftobuy.cost;
-            coins.GetComponent<TextMesh>().text = PlayerData.totalcoins.ToString();
-            thisstaff = stafftobuy;
-            nextstaff = null;
+            Staff stafftobuy = nextstaff;
+            if (stafftobuy.cost <= PlayerData.totalcoins)
+            {
+                //GetComponent<AudioSource>().Play();
+                stafftobuy.ownership = 2;
+                PlayerData.totalcoins -= stafftobuy.cost;
+                PlayerPrefs.SetInt("totalcoins", PlayerData.totalcoins);
+                coins.GetComponent<TextMesh>().text = PlayerData.totalcoins.ToString();
+                thisstaff = stafftobuy;
+                nextstaff = null;
 
-            wepslots[wepslots.IndexOf(currentgo)].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = stafftobuy.sprite;
-            weps[wepslots.IndexOf(currentgo)] = stafftobuy;
-            EquipStaff(wepslots[weps.IndexOf(stafftobuy)]);
-            slotSelected(wepslots[weps.IndexOf(stafftobuy)]);
-            GameObject.Find("particles_minus").GetComponent<ParticleSystem>().Play();
-            SaveData();
+                wepslots[wepslots.IndexOf(currentgo)].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = stafftobuy.sprite;
+                weps[wepslots.IndexOf(currentgo)] = stafftobuy;
+                EquipStaff(wepslots[weps.IndexOf(stafftobuy)]);
+                slotSelected(wepslots[weps.IndexOf(stafftobuy)]);
+                GameObject.Find("particles_minus").GetComponent<ParticleSystem>().Play();
+                SaveData();
+            }
         }
     }
 
@@ -272,5 +296,25 @@ public class csMenuWeapons : MonoBehaviour
             PlayerPrefs.SetInt("weps" + x, weps[x].id);
             PlayerPrefs.SetInt("weps.count", x+1);
         }
+    }
+
+    private string WrapText(string p, int m)
+    {
+        int max = m;
+        if (p.Length > max)
+        {
+            string n = "";
+            while (n != " ")
+            {
+                n = p.Substring(max - 1, 1);
+                max--;
+                if (max <= 0)
+                    break;
+            }
+
+            string temp = p.Substring(0, max) + "\n";
+            p = temp + p.Substring(max+1);
+        }
+        return p;
     }
 }

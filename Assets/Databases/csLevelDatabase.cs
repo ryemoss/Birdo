@@ -14,7 +14,7 @@ public class csLevelDatabase : MonoBehaviour
     {
         /*levelDB.Add(1000, new Level
         {
-            birds = addbirds(new Dictionary<string, int> { { "Pigeon", 3 } }),
+            birds = addbirds(new Dictionary<string, int> { { "Dove", 2 } }),
             spawnrate = 1,
             loc = -1,
             next = 1001,
@@ -30,7 +30,7 @@ public class csLevelDatabase : MonoBehaviour
         });
         levelDB.Add(1002, new Level
         {
-            birds = addbirds(new Dictionary<string, int> { { "Pigeon", 6 } }),
+            birds = addbirds(new Dictionary<string, int> { { "Dove", 6 } }),
             spawnrate = 1.5f,
             loc = -1,
             next = 1003,
@@ -38,7 +38,7 @@ public class csLevelDatabase : MonoBehaviour
         });
         levelDB.Add(1003, new Level
         {
-            birds = addbirds(new Dictionary<string, int> { { "Pigeon", 10 } }),
+            birds = addbirds(new Dictionary<string, int> { { "Dove", 10 } }),
             spawnrate = 1.5f,
             loc = -1,
             next = 1004,
@@ -46,7 +46,7 @@ public class csLevelDatabase : MonoBehaviour
         });
         levelDB.Add(1004, new Level
         {
-            birds = addbirds(new Dictionary<string, int> { { "Pigeon", 15 } }),
+            birds = addbirds(new Dictionary<string, int> { { "Dove", 15 } }),
             spawnrate = 1.5f,
             loc = -1,
             next = 1005,
@@ -54,7 +54,7 @@ public class csLevelDatabase : MonoBehaviour
         });
         levelDB.Add(1005, new Level
         {
-            birds = addbirds(new Dictionary<string, int> { { "Pigeon", 12 } }),
+            birds = addbirds(new Dictionary<string, int> { { "Dove", 12 } }),
             spawnrate = 1.8f,
             loc = 0,
             next = 1006,
@@ -62,7 +62,7 @@ public class csLevelDatabase : MonoBehaviour
         });
         levelDB.Add(1006, new Level
         {
-            birds = addbirds(new Dictionary<string, int> { { "Pigeon", 10 }, { "Goose", 1 } }),
+            birds = addbirds(new Dictionary<string, int> { { "Dove", 10 }, { "Goose", 1 } }),
             spawnrate = 1.8f,
             loc = -1,
             next = 1007,
@@ -70,7 +70,7 @@ public class csLevelDatabase : MonoBehaviour
         });
         levelDB.Add(1007, new Level
         {
-            birds = addbirds(new Dictionary<string, int> { { "Pigeon", 10 }, { "Goose", 3 } }),
+            birds = addbirds(new Dictionary<string, int> { { "Dove", 10 }, { "Goose", 3 } }),
             spawnrate = 1.8f,
             loc = -1,
             next = 1008,
@@ -78,7 +78,7 @@ public class csLevelDatabase : MonoBehaviour
         });
         levelDB.Add(1008, new Level
         {
-            birds = addbirds(new Dictionary<string, int> { { "Pigeon", 10 }, { "Goose", 6 } }),
+            birds = addbirds(new Dictionary<string, int> { { "Dove", 10 }, { "Goose", 6 } }),
             spawnrate = 2f,
             loc = -1,
             next = 1009,
@@ -86,7 +86,7 @@ public class csLevelDatabase : MonoBehaviour
         });
         levelDB.Add(1009, new Level
         {
-            birds = addbirds(new Dictionary<string, int> { { "Pigeon", 5 }, { "Goose", 9 } }),
+            birds = addbirds(new Dictionary<string, int> { { "Dove", 5 }, { "Goose", 9 } }),
             spawnrate = 2f,
             loc = -1,
             next = 1010,
@@ -102,7 +102,7 @@ public class csLevelDatabase : MonoBehaviour
         });
         levelDB.Add(2001, new Level
         {
-            birds = addbirds(new Dictionary<string, int> { { "Pigeon", 22 } }),
+            birds = addbirds(new Dictionary<string, int> { { "Dove", 22 } }),
             spawnrate = 4f,
             loc = -1,
             next = 2002,
@@ -110,7 +110,7 @@ public class csLevelDatabase : MonoBehaviour
         });
         levelDB.Add(2002, new Level
         {
-            birds = addbirds(new Dictionary<string, int> { { "Pigeon", 5 }, { "Goose", 5 }, { "Hummingbird", 2 } }),
+            birds = addbirds(new Dictionary<string, int> { { "Dove", 5 }, { "Goose", 5 }, { "Hummingbird", 2 } }),
             spawnrate = 3f,
             loc = -1,
             next = 2003,
@@ -118,7 +118,7 @@ public class csLevelDatabase : MonoBehaviour
         });
         levelDB.Add(2003, new Level
         {
-            birds = addbirds(new Dictionary<string, int> { { "Pigeon", 5 }, { "Goose", 5 }, { "Hummingbird", 5 } }),
+            birds = addbirds(new Dictionary<string, int> { { "Dove", 5 }, { "Goose", 5 }, { "Hummingbird", 5 } }),
             spawnrate = 3f,
             loc = -1,
             next = 2004,

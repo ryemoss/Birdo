@@ -21,6 +21,7 @@ public class csBulletBase : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(GetComponent<Rigidbody2D>().velocity.y, GetComponent<Rigidbody2D>().velocity.x) * Mathf.Rad2Deg);
     }
 
     void OnTriggerEnter2D(Collider2D col)

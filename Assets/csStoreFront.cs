@@ -24,10 +24,13 @@ public class csStoreFront: MonoBehaviour
         yind = 0;
         foreach (KeyValuePair<int, Gem> gem in csGemDatabase.gemDB)
         {
-            block = Instantiate(blockgo, gemcon.transform) as GameObject;
-            block.transform.localPosition = new Vector2(0, -yind * 3);
-            StartCoroutine(block.GetComponent<csEquipBlock>().setattributes(gem.Key, "gem"));
-            yind++;
+            if (gem.Key >= 100)
+            {   
+                block = Instantiate(blockgo, gemcon.transform) as GameObject;
+                block.transform.localPosition = new Vector2(0, -yind * 3);
+                StartCoroutine(block.GetComponent<csEquipBlock>().setattributes(gem.Key, "gem"));
+                yind++;
+            }
         }
     }
 

@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 public class csPlayer: MonoBehaviour
 {
     public GameObject Healthbar;
-    private float health = 0;
+    private float health = 0, s = 0;
 
-    private bool flash;
+    private bool flash, shake;
 
 	void Start ()
 	{
@@ -24,6 +24,8 @@ public class csPlayer: MonoBehaviour
         {
             Flashred();
         }
+        if (shake == true)
+            healthShake();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -39,6 +41,7 @@ public class csPlayer: MonoBehaviour
         flash = true;
         Healthbar.GetComponent<Slider>().value -= .1f;
         health = Healthbar.GetComponent<Slider>().value;
+        shake = true;
 
         if (health <= 0)
         {
@@ -69,4 +72,19 @@ public class csPlayer: MonoBehaviour
             t = 0;
         }
     }
+
+    private void healthShake()
+    {
+        s += Time.deltaTime;
+
+        if (s < .3f)
+        {
+        }
+        else
+        {
+            s = 0;
+            shake = false;
+        }
+    }
+
 }
