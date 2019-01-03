@@ -1,10 +1,10 @@
 # BirdoGit
 
-![Gameplay Gif](https://github.com/ryanmoser/Birdo/blob/master/birdogif.mp4 "Gameplay")
+![Gameplay Gif](screenshots/birdogif.mp4 "Gameplay")
 
-![alt text](https://github.com/ryanmoser/Birdo/blob/master/birdo2.png "Gameplay Screen")
+![screenshot 1](screenshots/birdo2.png "Gameplay Screen")
 
-![alt text](https://github.com/ryanmoser/Birdo/blob/master/birdo1.png "Upgrade Menu")
+![screenshot 2](screenshots/birdo1.png "Upgrade Menu")
 
 <h3>Game Concept:</h3> The player controls a statue whose mission is to shoot down birds that are instinctively drawn to poop on you. A plethora of RGP-like upgrades to your magical staff, statue abilities, health/energy bars, etc will increase your chances of successfully fending off the onslaught of birds in increasingly difficult levels. As the levels progress the player will encounter new environments, varying bird species, and boss megabirds.
 
